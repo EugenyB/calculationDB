@@ -1,6 +1,7 @@
 .order-table{
     border-color: black;
     background-color: black;
+    width: 50%;
 }
 
 .order-table-header{
@@ -21,4 +22,18 @@
     /*background:none repeat scroll 0 0 #F9F9F9;*/
     background-color: #E5E5E5;
     /*border-top:1px solid #BBBBBB;*/
+}
+
+.order-table-index {
+    width: 20%;
+    text-align: center;
+}
+
+.order-table-main {
+    text-align: left;
+}
+
+.order-table-last {
+    width: 20%;
+    text-align: center;
 }

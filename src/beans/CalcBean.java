@@ -51,7 +51,7 @@ public class CalcBean implements Serializable {
         return calculationDAO.findAll();
     }
 
-    public void save() {
+    public void readFile() {
         try {
             InputStream inputStream = file.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

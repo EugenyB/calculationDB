@@ -5,17 +5,22 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
+<head>
+   <link rel="stylesheet" type="text/css" href="resources/css/styles.css"/>
+</head>
+<f:view>
       <h:head>
          <title>Calculations</title>
          <h:outputStylesheet library="css" name="styles.css"/>
       </h:head>
       <h:body>
-         <h:form enctype="multipart/form-data">
+         <h:form>
          <h:dataTable value="#{calcBean.calculations}" var="calc"
                       styleClass="order-table"
                       headerClass="order-table-header"
-                      rowClasses="order-table-odd-row,order-table-even-row">
+                      rowClasses="order-table-odd-row,order-table-even-row"
+                      columnClasses="order-table-index,order-table-main,order-table-last"
+         >
             <h:column>
                <!-- column header -->
                <f:facet name="header">#</f:facet>
@@ -37,18 +42,30 @@
                </h:commandLink>
             </h:column>
          </h:dataTable>
+         </h:form>
+         <table>
+            <tr>
+               <td>
+         <h:form enctype="multipart/form-data">
             <h:inputFile value="#{calcBean.file}">
-               <f:ajax listener="#{calcBean.save}" />
+               <f:ajax listener="#{calcBean.readFile}" />
             </h:inputFile>
          </h:form>
+               </td>
+               <td>
          <h:form>
             <h:commandButton action="#{calcBean.showNew}" value="Calc"/>
          </h:form>
+               </td>
+            </tr>
+         </table>
          <h:panelGroup rendered="#{calcBean.calculationPresent}">
             <h:dataTable value="#{calcBean.newCalculations}" var="tr"
                          styleClass="order-table"
                          headerClass="order-table-header"
-                         rowClasses="order-table-odd-row,order-table-even-row">
+                         rowClasses="order-table-odd-row,order-table-even-row"
+                         columnClasses="order-table-main, order-table-last"
+            >
                <h:column>
                   <f:facet name="header">Expression</f:facet>
                   #{tr.expression}

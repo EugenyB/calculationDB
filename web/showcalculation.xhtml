@@ -15,7 +15,9 @@
             <h:dataTable value="#{calcBean.calculations}" var="calc"
                          styleClass="order-table"
                          headerClass="order-table-header"
-                         rowClasses="order-table-odd-row,order-table-even-row">
+                         rowClasses="order-table-odd-row,order-table-even-row"
+                         columnClasses="order-table-index,order-table-main,order-table-last"
+            >
                 <h:column>
                     <!-- column header -->
                     <f:facet name="header">#</f:facet>
@@ -42,7 +44,9 @@
         <h:dataTable value="#{calcBean.selected(calcBean.selectedId)}" var="tr"
                      styleClass="order-table"
                      headerClass="order-table-header"
-                     rowClasses="order-table-odd-row,order-table-even-row">
+                     rowClasses="order-table-odd-row,order-table-even-row"
+                     columnClasses="order-table-main, order-table-last"
+        >
             <h:column>
                 <f:facet name="header">Expression</f:facet>
                 #{tr.expression}
