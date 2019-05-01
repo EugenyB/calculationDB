@@ -32,12 +32,12 @@ public class CalcBean implements Serializable {
     public void init() {
         try {
 
-            InitialContext cxt = new InitialContext();
-            if (cxt == null) {
-                throw new Exception("Error -- no context!");
-            }
+            InitialContext context = new InitialContext();
+//            if (context == null) {
+//                throw new Exception("Error -- no context!");
+//            }
 
-            DataSource ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/postgres");
+            DataSource ds = (DataSource) context.lookup("java:/comp/env/jdbc/postgres");
             if (ds == null) {
                 throw new Exception("Data source not found!");
             }
@@ -119,5 +119,11 @@ public class CalcBean implements Serializable {
     public String getSelectedDate() {
         Calculation calculation = calculationDAO.find(selectedId);
         return calculation.getCreationDate();
+    }
+
+    public String cancelCalculation() {
+        currentDate = null;
+        selectedId = 0;
+        return "index.xhtml";
     }
 }
